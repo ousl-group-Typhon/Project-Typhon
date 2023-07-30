@@ -1,0 +1,45 @@
+.btn-custom-primary{
+    background-color: #1D63FF;
+    font-family: Roboto;
+    font-weight: 500;
+    border: #fff;
+    color: #fff;
+    transition-duration: 450ms;
+}
+
+.btn-custom-primary:active{
+    background-color: #0042cf;
+    border: #555555;
+    color: #fff;
+}
+
+.btn-custom-primary:hover{
+    background-color: #0046dd;
+    border: #fff;
+    color: #fff;
+}
+
+
+.input-group-addon {
+    padding: 1px 8px;
+    /* font-size: 14px; */
+    font-weight: 400;
+    line-height: 1;
+    /* color: #555; */
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #ccd0d2;
+    border-radius: 4px;
+}
+.dt, kbd kbd, label {
+    FONT-WEIGHT: 500;
+}
+
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    height: 100vh;
+    margin: 0;
+}
