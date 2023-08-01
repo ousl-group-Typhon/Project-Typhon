@@ -2,78 +2,97 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="mx-auto">Login</div>
-                
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg p-3 mb-5" style="border:transparent; box-shadow">
+                <div class="card-header border border-0 text-center"style="background-color:transparent;"><h1 class="fw-bold" >{{ __('Welocme back ; )') }}</h1>
+                    <p class="fw-light">Happy to see you again. <br>Use your email and password to login</p>
+                </div>
+                  
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <!-- <label for="email" class="col-md-4 control-label">E-Mail Address</label> -->
-
-                            <div class="col-md-10 col-md-offset-1 ">
-                                <div class="input-group">   
-                                    <span class="input-group-addon" id="basic-addon1"><span class="material-icons orange600">mail_outline</span></span> <!--useed material ui icons inside of inbuilt bootsrap class div-->                          
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder = "Email Address">
-                                </div>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
+                                <label for="floatingInput">{{ __('Email Address') }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3 ">
+                                <input type="password" class="form-control @error('email') is-invalid @enderror " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@example.com">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <label for="password">{{ __('Password') }}</label>
+                            </div>
+                       
+                        <!-- <div class="row mb-3">
+                        
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                      
+                            
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <!-- <label for="password" class="col-md-4 control-label">Password</label> -->
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
-                            <div class="col-md-10 col-md-offset-1 ">
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
                                 
-                                <div class="input-group">   
-                                    <span class="input-group-addon" id="basic-addon1"><span class="material-icons orange600">lock_outline</span></span> <!--useed material ui icons inside of inbuilt bootsrap class div-->                          
-                                    <input id="password" type="password" class="form-control" name="password" required placeholder = "Password">
-                                </div>
-
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
-                        </div>
-                        <div class="row">
-                        <div class="container">
-                            <div class="col col-md-1 col-md-offset-1">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                        </div> -->
+                    <div class="container">
+                        <div class="row ">
+                
+                                <div class="col ">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                                  
-                            </div>
-                            <div class="col col-md-1">
-                                <div>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                                <div class="col col-pull-1">
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Password?') }}
+                                    </a>
+                                @endif
                                 </div>
-                                    
-                            </div>
+                            
                         </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-custom-primary">
-                                    Login
+                    </div>
+                    </div>
+                    <div class="row mb-2 mt-4">
+                    <div class="col-md-12">
+                                <div class="d-grid">
+                                <button type="submit" class="btn btn-primary fw-medium fs-5">
+                                    {{ __('Login') }}
                                 </button>
-
-                               
-                            </div>
+                                </div>
+                                
+                                </div>
+                                
+                         
                         </div>
                     </form>
                 </div>
