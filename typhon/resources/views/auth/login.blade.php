@@ -6,7 +6,7 @@
         <div class="col-md-5">
             <div class="card shadow-lg p-3 mb-5" style="border:transparent; box-shadow">
                 <div class="card-header border border-0 text-center"style="background-color:transparent;"><h1 class="fw-bold" >{{ __('Welocme back ; )') }}</h1>
-                    <p class="fw-light">Happy to see you again. <br>Use your email and password to login</p>
+                    <p class="fw-light">Happy to see you again.</p>
                 </div>
                   
                 <div class="card-body">
