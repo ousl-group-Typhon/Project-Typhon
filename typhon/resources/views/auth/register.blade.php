@@ -7,7 +7,7 @@
             <div class="card shadow-lg p-3 mb-5" style="border:transparent; box-shadow">
                 <div class="card-header border border-0 text-center"style="background-color:transparent;">
                 <h1 class="fw-bold">{{ __('Let`s Get Started B)' ) }}</h1>
-                <p class="fw-light">Create your accout at typhon and worry no more!</p>
+                <p class="fw-light">Create your accout at Project typhon and worry no more!</p>
                 </div>
 
                 <div class="card-body">
