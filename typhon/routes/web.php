@@ -18,9 +18,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/loginAutoGen', function () {
     return view('auth.loginAutoGen');
 })->name('loginAutoGen');
+
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
