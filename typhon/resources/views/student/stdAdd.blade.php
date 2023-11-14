@@ -4,10 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{__('Add Studend')}}</div>
+            <div class="card shadow-lg p-1 mb-5" style="border:transparent; box-shadow">
+                 <div class="fs-2 ps-3 pt-2">{{__('Add Studend')}}</div>
 
                 <div class="card-body">
+                    
+                
                     <form method="POST" action="{{ route('students.addStudent') }}">
                         @csrf
 
