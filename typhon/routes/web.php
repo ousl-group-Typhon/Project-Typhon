@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AssignmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
@@ -29,3 +32,11 @@ Route::get('/loginAutoGen', function () {
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
+
+
+//Asignment Route set by controller
+Route::get('/assignments', [App\Http\Controllers\AssignmentsController::class, 'assignmentsform'])->name('assignments');
+
+
+//Submit assignments from form
+Route::post('/submissions/store', [AssignmentsController::class, 'store'])->name('post.submissions');
