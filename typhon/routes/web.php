@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Students\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,9 @@ Route::get('/loginAutoGen', function () {
     return view('auth.loginAutoGen');
 })->name('loginAutoGen');
 
-Route::get('/dashboard', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+Route::get('/student/addstudent', function () {return view('student.stdAdd');})->name('student.add')->middleware(['auth', 'verified']);
+
+Route::post('/student/store', [App\Http\Controllers\Students\StudentController::class,'store'])-> name('students.addStudent')->middleware(['auth', 'verified']);
+Route::get('/student/index',[App\Http\Controllers\Students\StudentController::class,'index'])->name('students.index')->middleware(['auth', 'verified']);
+Route::get('/student/edit/{studentId}',[App\Http\Controllers\Students\StudentController::class,'edit'])->name('students.edit')->middleware(['auth', 'verified']);
+Route::get('/student/profile/{studentId}',[App\Http\Controllers\Students\StudentController::class,'show'])->name('students.show')->middleware(['auth', 'verified']);
