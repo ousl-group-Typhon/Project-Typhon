@@ -30,12 +30,20 @@ class StudentController extends Controller
     }
 
     public function edit($studentId){
-        $student = Student::findOrFial($studentId);
+        $student = Student::findOrFail($studentId);
         return view('student.stdEdit',compact('student'));
     }
     
     public function update($studentId, Request $request){
-        Student::findOrFail($studentId)->update($request->all());
-        return redirect(route('student.stdList'));
+        $student = Student::findOrFail($studentId);
+        
+        $student->student_fname = $request->input('fName');
+        $student->student_lname = $request->input('lName');
+        $student->email = $request->input('email');
+        $student->phone_number = $request->input('phoneNumber');
+        $student->guardians_pnumber = $request->input('guardiansPnumber');
+        $student->update();
+
+        return redirect(route('students.index'))->with('status','Profile update!');
     }
 }
