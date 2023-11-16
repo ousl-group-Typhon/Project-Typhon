@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AssignmentsController extends Controller
 {
 
-    //link page of assignment submission form
+    //link page of assignment submission form to
     public function assignmentsform()
     {
         return view('assignments.assignmentssubmit');
@@ -45,3 +45,5 @@ class AssignmentsController extends Controller
     }
 }
 }
+
+//end

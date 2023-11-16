@@ -64,4 +64,4 @@ Route::get('/student/edit/{studentId}',[App\Http\Controllers\Students\StudentCon
 //Student Profile
 Route::get('/student/profile/{studentId}',[App\Http\Controllers\Students\StudentController::class,'show'])->name('students.show')->middleware(['auth', 'verified']);
 
-
+//end of routes

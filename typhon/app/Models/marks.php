@@ -15,3 +15,5 @@ class marks extends Model
         'marks',
     ];
 }
+
+//model end
