@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Students\StudentController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AssignmentsController;
+use App\Http\Controllers\Assignments\AssignmentsController;
+use App\Http\Controllers\Assignments\MarkingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +40,17 @@ Route::get('/loginAutoGen', function () {
 
 
 //Asignment Route set by controller
-Route::get('/assignments', [App\Http\Controllers\AssignmentsController::class, 'assignmentsform'])->name('assignments');
+Route::get('/assignments', [App\Http\Controllers\Assignments\AssignmentsController::class, 'assignmentsform'])->name('assignments');
 
 
 //Submit assignments from form
 Route::post('/submissions/store', [AssignmentsController::class, 'store'])->name('post.submissions');
 
+//Submit Marks from Table
+Route::post('/marks/store', [MarkingController::class, 'storemarks'])->name('mark.submit');
+
+//Assignment marking page for tutors
+Route::get('/marking', [App\Http\Controllers\Assignments\MarkingController::class, 'index'])->name('marking');
 
 //Student CRUD operation
 //Add Student

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Assignments;
 
 use Illuminate\Http\Request;
 use App\Models\assignmentssubmission;
+use App\Http\Controllers\Controller;
 
 class AssignmentsController extends Controller
 {
@@ -16,12 +17,13 @@ class AssignmentsController extends Controller
 
     //Store data into the database from the submission form
     public function store(Request $request)
-{
+    {
     try {
         $user_id = auth()->user()->id;
 
         $data = [
             'user_id' => $user_id,
+            'student_id' => $request->student_id,
             'cource_id' => $request->cource_id,
         ];
 
@@ -36,7 +38,7 @@ class AssignmentsController extends Controller
 
             return 'Data stored successfully!';
         } else {
-            return 'No file uploaded!';
+            return 'No file uploaded!';          
         }
     } catch (\Exception $e) {
         return $e->getMessage();

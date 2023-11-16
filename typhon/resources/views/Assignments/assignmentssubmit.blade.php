@@ -16,8 +16,13 @@
                     @endif
 
 
-                    <form action="{{ route('post.submissions') }}" method="post" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('post.submissions') }}" enctype="multipart/form-data"> 
                         @csrf
+
+                    <div class="form-group">
+                        <label for="studentid">Student Id</label>
+                        <input type="text" class="form-control" name="student_id" id="studentid" aria-describedby="emailHelp" placeholder="Enter Student Id">
+                    </div>
 
                     <div class="form-group">
                         <label for="courcecode">Cource Code</label>

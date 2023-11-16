@@ -17,7 +17,7 @@ class StudentController extends Controller
             'guardians_pnumber' => $request->guardiansPnumber,      
         ]);
 
-        return redirect(route('student.show'))->with('status','Profile created!');
+        return redirect(route('marking'))->with('status','Marks Added!');
     }
 
     public function index(){
