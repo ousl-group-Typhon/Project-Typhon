@@ -61,6 +61,8 @@ Route::post('/student/store', [App\Http\Controllers\Students\StudentController::
 Route::get('/student/index',[App\Http\Controllers\Students\StudentController::class,'index'])->name('students.index')->middleware(['auth', 'verified']);
 //Edit student details
 Route::get('/student/edit/{studentId}',[App\Http\Controllers\Students\StudentController::class,'edit'])->name('students.edit')->middleware(['auth', 'verified']);
+//Student update 
+Route::get('/student/update/{studentId}',[App\Http\Controllers\Students\StudentController::class,'update'])->name('students.update')->middleware(['auth', 'verified']);
 //Student Profile
 Route::get('/student/profile/{studentId}',[App\Http\Controllers\Students\StudentController::class,'show'])->name('students.show')->middleware(['auth', 'verified']);
 
