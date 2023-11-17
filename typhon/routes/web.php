@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Students\StudentController;
+use App\Http\Controllers\InstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assignments\AssignmentsController;
 use App\Http\Controllers\Assignments\MarkingController;
 
+//use App\Http\Controllers\AssignmentsController;
+use App\Http\Controllers\ErrorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +57,7 @@ Route::get('/marking', [App\Http\Controllers\Assignments\MarkingController::clas
 
 //Student CRUD operation
 //Add Student
-Route::get('/student/addstudent', function () {return view('student.stdAdd');})->name('student.add')->middleware(['auth', 'verified']);
+Route::get('/student/addstudent', [App\Http\Controllers\Students\StudentController::class,'add'])->name('student.add')->middleware(['auth', 'verified']);
 //Student store method
 Route::post('/student/store', [App\Http\Controllers\Students\StudentController::class,'store'])-> name('students.addStudent')->middleware(['auth', 'verified']);
 //All students
@@ -67,3 +70,21 @@ Route::get('/student/update/{studentId}',[App\Http\Controllers\Students\StudentC
 Route::get('/student/profile/{studentId}',[App\Http\Controllers\Students\StudentController::class,'show'])->name('students.show')->middleware(['auth', 'verified']);
 
 //end of routes
+
+
+//Insttiute CRUD
+//Add Institiu
+Route::get('/institute/addinstitute', function () {return view('institute.instAdd');})->name('institute.add')->middleware(['auth', 'verified']);
+//Student store method
+Route::post('/institute/store', [App\Http\Controllers\InstituteController::class,'store'])-> name('institute.addinstitute')->middleware(['auth', 'verified']);
+//All students
+Route::get('/institute/index',[App\Http\Controllers\InstituteController::class,'index'])->name('institute.index')->middleware(['auth', 'verified']);
+//Edit student details
+Route::get('/institute/edit/{studentId}',[App\Http\Controllers\Students\StudentController::class,'edit'])->name('institute.edit')->middleware(['auth', 'verified']);
+//Student update 
+Route::get('/institute/update/{studentId}',[App\Http\Controllers\Students\StudentController::class,'update'])->name('students.update')->middleware(['auth', 'verified']);
+//Student Profile
+Route::get('/institute/profile/{studentId}',[App\Http\Controllers\Students\StudentController::class,'show'])->name('students.show')->middleware(['auth', 'verified']);
+
+
+Route::get('/error',[App\Http\Controllers\ErrorController::class,'error'])->name('error')->middleware(['auth', 'verified']);

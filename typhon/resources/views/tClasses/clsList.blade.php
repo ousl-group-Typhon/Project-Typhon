@@ -6,8 +6,8 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Student Name</th>
-        <th scope="col">Status</th>
+        <th scope="col">Institute</th>
+        <th scope="col">Tutor</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -25,9 +25,9 @@
         
         <td>{{$student->student_fname}} {{$student->student_lname}}</td>
         <td>@if ($student->acc_status == 'active')
-            <span class="badge rounded-pill text-bg-success">Active</span>
+            <span class="badge text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">Active</span>
         @else
-            <span class="badge rounded-pill text-bg-success">Active</span>
+            <span class="badge text-success-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">Inactive</span>
         @endif</td>
         <td><a href="{{route ('students.edit', $student->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td>
       </tr>

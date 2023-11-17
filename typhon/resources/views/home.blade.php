@@ -1,12 +1,20 @@
 @extends('layouts.app')
 
+
 @section('content')
 
-<a class="nav-link" href="{{ route('assignments') }}">{{ __('assignments') }}</a>
+<a class="nav-link" href="{{ route('assignments') }}"></a>
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+
+            <a class="btn btn-primary rounded-pill" href="{{ route('assignments') }}">Assignments</a>
+            <a class="btn btn-primary rounded-pill" href="{{ route('student.add') }}">Add Student</a>
+            <a class="btn btn-primary rounded-pill" href="{{ route('students.index') }}">All Students</a>
+            <a class="btn btn-primary rounded-pill" href="{{ route('institute.add') }}">Add Institute</a>
+           
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -17,7 +25,8 @@
                         </div>
                     @endif
 
-
+                   
+                    
                     <table class="table">
                     <thead>
                         <tr>
