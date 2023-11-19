@@ -18,18 +18,19 @@
                     {{ session('status') }}
                     @endif
                 </div>
-        @foreach ($students as $student)
+                
+        @foreach ($tclass as $t)
 
       <tr>
-        <th scope="row">{{$student->id}}</th>
+        <th scope="row">{{$t->id}}</th>
         
-        <td>{{$student->student_fname}} {{$student->student_lname}}</td>
-        <td>@if ($student->acc_status == 'active')
+        <td>{{$t->class_name}}</td>
+        {{-- <td>@if ($tclass->acc_status == 'active')
             <span class="badge text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">Active</span>
         @else
             <span class="badge text-success-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">Inactive</span>
-        @endif</td>
-        <td><a href="{{route ('students.edit', $student->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td>
+        @endif</td> --}}
+        <td><a href="{{route ('students.edit', $t->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td>
       </tr>
       @endforeach
     </tbody>

@@ -5,7 +5,7 @@ use App\Http\Controllers\InstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assignments\AssignmentsController;
 use App\Http\Controllers\Assignments\MarkingController;
-
+use App\Http\Controllers\TClassController;
 //use App\Http\Controllers\AssignmentsController;
 use App\Http\Controllers\ErrorController;
 
@@ -88,3 +88,13 @@ Route::get('/institute/profile/{studentId}',[App\Http\Controllers\Students\Stude
 
 
 Route::get('/error',[App\Http\Controllers\ErrorController::class,'error'])->name('error')->middleware(['auth', 'verified']);
+
+Route::get('/class/index',[App\Http\Controllers\TClassController::class,'index'])->name('class.index')->middleware(['auth', 'verified']);
+
+
+Route::get('/class/index/withid/{classId}',[App\Http\Controllers\TClassController::class,'showStudentsInClass'])->name('class.index')->middleware(['auth', 'verified']);
+
+// gives classes which belongs to an institute
+Route::get('/institute/classes',[App\Http\Controllers\InstituteController::class,'showInstituteClasses'])->name('institute.classlist')->middleware(['auth', 'verified']);
+// gives students in the institute
+Route::get('/institute/students',[App\Http\Controllers\InstituteController::class,'showInstituteStudents'])->name('institute.studentlist')->middleware(['auth', 'verified']);

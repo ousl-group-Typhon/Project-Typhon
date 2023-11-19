@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Institute extends Model
 {
     use HasFactory;
-
+    public function classes()
+    {
+        return $this->hasMany(TClass::class);
+    }
+    public function students()
+    {
+        return $this->hasManyThrough(Student::class, TClass::class);
+    }
     protected $fillable = [
         'institiute_name',
        // 'institiute_address',

@@ -15,15 +15,15 @@
 
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <input id="fName" type="text" class="form-control" name="fName" value="{{ old('fName') }}" required autocomplete="fName" autofocus placeholder="Jhon">
-                                <label for="floatingInput">{{ __('First Name') }}</label>
+                                <input id="clsName" type="text" class="form-control" name="clsName" value="{{ old('clsName') }}" required autocomplete="clsName" autofocus placeholder="Jhon">
+                                <label for="floatingInput">{{ __('Class Name') }}</label>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-floating mb-3">
-                                <input id="lName" type="text" class="form-control" name="lName" value="{{ old('lName') }}" required autocomplete="lName" autofocus placeholder="Jhon">
-                                <label for="floatingInput">{{ __('Last Name') }}</label>
+                                <input id="tutorID" type="text" class="form-control" name="tutorID" value="{{ old('tutorID') }}" required autocomplete="tutorID" autofocus placeholder="Jhon">
+                                <label for="floatingInput">{{ __('Tutor ID') }}</label>
                             </div>
                         </div>
 

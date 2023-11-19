@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class TClass extends Model
 {
     use HasFactory;
-
+    
+    public function institute()
+    {
+        return $this->belongsTo(Institute::class);
+    }
     protected $fillable = [
         'class_name',
         'tutor_id',

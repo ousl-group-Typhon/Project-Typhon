@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Institute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class InstituteController extends Controller
 {
@@ -50,5 +52,30 @@ class InstituteController extends Controller
         $student->update();
 
         return redirect(route('students.index'))->with('status','Profile update!');
+    }
+
+    //custom functions 
+    //show classes in institiute
+    public function showInstituteClasses(){
+        $user = Auth::user()->id;
+        $institute = DB::table('institutes')->where('owner', $user)->first();
+        $tclass = DB::table('t_classes')->where('institute_id',$institute->id)->get();
+        return view('tClasses.clsList',compact('tclass'));
+    }
+
+    //show students in institute
+    public function showInstituteStudents(){
+        $user = Auth::user()->id;
+        $institute = DB::table('institutes')->where('owner', $user)->first();
+
+        $students= DB::table('students')
+        ->join('stdbelongstocls', 'students.id', '=', 'stdbelongstocls.student_id')
+        ->join('t_classes', 'stdbelongstocls.class_id', '=', 't_classes.id')
+        ->where('t_classes.institute_id', '=', $institute->id)
+        ->select('students.*')
+        ->distinct()
+        ->get();
+
+        return view('student.stdList',compact('students'));
     }
 }
