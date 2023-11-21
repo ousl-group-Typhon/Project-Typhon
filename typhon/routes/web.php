@@ -9,6 +9,10 @@ use App\Http\Controllers\TClassController;
 //use App\Http\Controllers\AssignmentsController;
 use App\Http\Controllers\ErrorController;
 
+//Side bar
+use App\Http\Controllers\SidebarController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,3 +102,7 @@ Route::get('/class/index/withid/{classId}',[App\Http\Controllers\TClassControlle
 Route::get('/institute/classes',[App\Http\Controllers\InstituteController::class,'showInstituteClasses'])->name('institute.classlist')->middleware(['auth', 'verified']);
 // gives students in the institute
 Route::get('/institute/students',[App\Http\Controllers\InstituteController::class,'showInstituteStudents'])->name('institute.studentlist')->middleware(['auth', 'verified']);
+
+// side bar Route
+Route::get('/sidebar', [SidebarController::class, 'sidebarCall']);
+
