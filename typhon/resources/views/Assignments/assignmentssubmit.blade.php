@@ -34,7 +34,7 @@
                         <input name="submission" type="file" class="form-control-file" id="submission">
                     </div>
   
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary fw-medium">Submit</button>
                 
                 </form>
 
