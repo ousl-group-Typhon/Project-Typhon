@@ -30,4 +30,20 @@ class Student extends Model
         'guardians_pnumber',
         'acc_status'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Listen for the 'created' event and create a corresponding payment record
+        static::created(function ($student) {
+
+            Payments::create([
+                'student_id' => $student->id,
+                'amount' => 0, // Initial amount, you can adjust this as needed
+                'due_date' => now()->endOfMonth(), // Due date at the end of the current month
+                'status' => 'due',
+            ]);
+        });
+    }
 }

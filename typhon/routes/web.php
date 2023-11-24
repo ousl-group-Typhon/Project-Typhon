@@ -5,6 +5,7 @@ use App\Http\Controllers\InstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assignments\AssignmentsController;
 use App\Http\Controllers\Assignments\MarkingController;
+use App\Http\Controllers\Payments\PaymentController;
 use App\Http\Controllers\TClassController;
 //use App\Http\Controllers\AssignmentsController;
 use App\Http\Controllers\ErrorController;
@@ -58,6 +59,13 @@ Route::post('/marks/store', [MarkingController::class, 'storemarks'])->name('mar
 
 //Assignment marking page for tutors
 Route::get('/marking', [App\Http\Controllers\Assignments\MarkingController::class, 'index'])->name('marking');
+
+
+//Payment page link
+Route::get('/payment', [App\Http\Controllers\Payments\PaymentController::class, 'index'])->name('payment.index');
+
+//Record Payment
+Route::post('/payment/recorded', [PaymentController::class, 'store'])->name('record.payment');
 
 //Student CRUD operation
 //Add Student

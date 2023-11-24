@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('assignment_id');
-            $table->string('student_id');
-            $table->string('marks');
+            $table->unsignedBigInteger('student_id');
+            $table->integer('amount');
+            $table->string('status');
+            $table->timestamp('due_date')->nullable(); 
             $table->timestamps();
 
-            $table->foreign('assignment_id')->references('id')->on('assignmentssubmissions'); 
+            $table->foreign('student_id')->references('id')->on('students'); 
         });
     }
 
@@ -27,8 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('payments');
     }
 };
-
-//migration file
