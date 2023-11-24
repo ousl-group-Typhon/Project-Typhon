@@ -17,7 +17,7 @@ class Institute extends Model
         return $this->hasManyThrough(Student::class, TClass::class);
     }
     protected $fillable = [
-        'institiute_name',
+        'institute_name',
        // 'institiute_address',
         'owner',
         //'phone_number'
