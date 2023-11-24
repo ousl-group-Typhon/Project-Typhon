@@ -17,7 +17,7 @@ class InstituteController extends Controller
         
       
             Institute::create([
-                'institiute_name' => $request->instName,
+                'institute_name' => $request->instName,
                 //   'institiute_address' => $request->instAddress,
                 'owner' => $request->owner,
                 // 'phone_number' => $request->phoneNumber,    
