@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@extends('sidebar')
 <div class="container-xxl px-5">
 <table class="table">
     <thead>

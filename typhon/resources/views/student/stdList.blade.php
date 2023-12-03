@@ -1,40 +1,69 @@
-@extends('layouts.app')
-@section('content')
+<!doctype html>
+<html lang="en">
 
-<div class="container-xxl px-5">
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Student Name</th>
-        <th scope="col">Status</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-        <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                    @endif
-                </div>
-        @foreach ($students as $student)
+<head>
 
-      <tr>
-        <th scope="row">{{$student->id}}</th>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar 01</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
+</head>
+
+<body>
+     
         
-        <td>{{$student->student_fname}} {{$student->student_lname}}</td>
-        <td>@if ($student->acc_status == 'active')
-            <span class="badge text-success-emphasis bg-success-subtle border border-success-subtle rounded-pill">Active</span>
-        @else
-            <span class="badge text-success-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">Inactive</span>
-        @endif</td>
-        <td><a href="{{route ('students.edit', $student->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
+
     
-</div>
+    <div class="navigation">
+        <div class="logo">
+            <img src="{{ asset('img/typhon.jpg') }}" alt="Typhon Image" alt="Logo" class="img logo rounded-circle mb-5">
+            </div>
+       <ul>
+            
+            <li class="list active">
+                <a href="#">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title"> Classes</span>
+                </a>
+            </li>
+
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title">Teachers</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                    <span class="title"> Students</span>
+                </a>
+           
+
+
+        </ul>
+    </div>
     
-@endsection
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        //add active class in selected list item
+        let list = document.querySelectorAll('.list');
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function () {
+                let j = 0;
+                while (j < list.length) {
+                    list[j++].className = 'list'
+                }
+                list[i].className = 'list active'
+            }
+        }
+    </script>
+
+</body>
+
+</html>

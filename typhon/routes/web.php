@@ -12,6 +12,8 @@ use App\Http\Controllers\ErrorController;
 
 //Side bar
 use App\Http\Controllers\SidebarController;
+//navigation bar
+use App\Http\Controllers\navigationController;
 
 
 /*
@@ -134,7 +136,12 @@ Route::get('/institute/students',[App\Http\Controllers\InstituteController::clas
 // side bar Route
 Route::get('/sidebar', [SidebarController::class, 'sidebarCall']);
 
+//navigation route
+Route::get('/navigation', [navigationController::class, 'navigation']);
+
+
 
 //Teacher's Interface
 //institiutes which have classes showInstitutesWithClasses()
 Route::get('/classes/institutes',[App\Http\Controllers\InstituteController::class,'showInstitutesWithClasses'])->name('institute.studentlist')->middleware(['auth', 'verified']);
+
