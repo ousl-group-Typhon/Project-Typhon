@@ -36,7 +36,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/loginAutoGen', function () {
     return view('auth.loginAutoGen');
@@ -50,7 +50,8 @@ Route::get('/loginAutoGen', function () {
 
 
 //analytics page
-Route::get('/analytics', [App\Http\Controllers\Analytics\AnalyticsController::class, 'index'])->name('analytics');
+
+Route::get('/home', [App\Http\Controllers\Analytics\AnalyticsController::class, 'index'])->name('analytics');
 
 Route::get('/total-students', [AnalyticsController::class, 'totalStudents']);
 

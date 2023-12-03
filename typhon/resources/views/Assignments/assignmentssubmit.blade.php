@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @extends('sidebar')
 @section('content')
+@extends('navigation')
+<style>
+    .card{
+        position: relative;
+        top: 50%;
+        left: 10%;
+    }
+    </style>
 
 <div class="container">
     <div class="row justify-content-center">

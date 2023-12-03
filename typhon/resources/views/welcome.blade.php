@@ -59,11 +59,11 @@
                             <a href="{{ url('/home') }}" class="btn btn-dark">Home</a>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-dark">Log in</a>
-                            {{-- <a href="{{ route('loginAutoGen') }}" class=""> Old Login</a> --}}
+                            <a href="{{ route('loginAutoGen') }}" class=""> Old Login</a>
     
-                            {{-- @if (Route::has('register'))
+                            @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="">Register</a>
-                            @endif --}}
+                            @endif
                         @endauth
                     </div>
                 @endif   
