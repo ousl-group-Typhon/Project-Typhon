@@ -19,7 +19,7 @@ class InstituteFactory extends Factory
     public function definition(): array
     {
         return [
-            'institiute_name' => $this->faker->name,
+            'institute_name' => $this->faker->name,
             //   'institiute_address' => $request->instAddress,
             'owner' => $this->faker->numberBetween(1, 3),
             // 'phone_number' => $request->phoneNumber, 

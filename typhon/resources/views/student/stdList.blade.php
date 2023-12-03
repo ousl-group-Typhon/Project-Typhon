@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@extends('navigation')
+{{-- @extends('navigation') --}}
 @section('content')
 @extends("sidebar")
 <style>

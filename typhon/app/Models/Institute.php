@@ -18,7 +18,7 @@ class Institute extends Model
     }
     protected $fillable = [
         'institute_name',
-       // 'institiute_address',
+       // 'institute_address',
         'owner',
         //'phone_number'
 

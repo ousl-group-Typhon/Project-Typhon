@@ -18,7 +18,7 @@
 
                     <a href="{{ route('student.add') }}"> <li> Add students </li> </a>
                   
-                    <li>CLASS 2</li>
+                    <li>Student List</li>
                     <li>CLASS 3</li>
                     <li>SS 4</li>
                     <li>CLASS 5</li>

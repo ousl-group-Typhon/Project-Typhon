@@ -67,10 +67,10 @@ class InstituteController extends Controller
     }
 
     //custom functions 
-    //show classes in institiute
+    //show classes in institute
     public function showInstituteClasses(){
-        // $user = Auth::user()->id;
-        $user = getUserId();
+        $user = Auth::user()->id;
+        //$user = getUserId();
         $institute = DB::table('institutes')->where('owner', $user)->first();
         $tclass = DB::table('t_classes')
         ->join('users as user','t_classes.tutor_id', '=', 'user.id')
@@ -81,8 +81,8 @@ class InstituteController extends Controller
 
     //show students in institute
     public function showInstituteStudents(){
-        //$user = Auth::user()->id;
-        $user = getUserId();
+        $user = Auth::user()->id;
+        //$user = getUserId();
         $institute = DB::table('institutes')->where('owner', $user)->first();
 
         $students= DB::table('students')
@@ -99,7 +99,11 @@ class InstituteController extends Controller
     public function showInstitutesWithClasses(){
         $userId = Auth::user()->id;
         //$userId = getUserId();
-        $institutes = DB::table('t_classes')->join('institutes', 't_classes.institute_id', '=' , 'institutes.id')->where('t_classes.tutor_id', '=', $userId)->select('institutes.*')->get();
+        $institutes = DB::table('t_classes')
+        ->join('institutes', 't_classes.institute_id', '=' , 'institutes.id')
+        ->where('t_classes.tutor_id', '=', $userId)
+        ->select('institutes.*')
+        ->get();
         
         return view('institute.instList',compact('institutes'));
     }

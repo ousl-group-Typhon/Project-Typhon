@@ -33,7 +33,7 @@
         @else
             <span class="badge text-success-emphasis bg-danger-subtle border border-danger-subtle rounded-pill">Inactive</span>
         @endif</td> --}}
-        <td><a href="{{route ('clsEdit.edit', $t->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td>
+        {{-- <td><a href="{{route ('clsEdit.edit', $t->id)}}" class="btn btn-sm btn-dark py-0">Edit</a></td> --}}
       </tr>
       @endforeach
     </tbody>

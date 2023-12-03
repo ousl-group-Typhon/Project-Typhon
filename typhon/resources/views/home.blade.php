@@ -21,9 +21,9 @@
                     Total Payments This Month: Rs: {{ $totalPayments }}
                     </div>
                     <div class="col">
-                    No Of Sts Payme: {{ $duePaymentsCount }}
+                    No Of Due Payments: {{ $duePaymentsCount }}
                     </div>
-                    {{-- Due Payment %: {{ $DuePaymentsPercentage }} --}}
+                    Due Payment %: {{ $DuePaymentsPercentage }}
                 </div>
                 </div>
 

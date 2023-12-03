@@ -1,7 +1,7 @@
 @extends('layouts.app')
-@extends('sidebar')
+{{-- @extends('sidebar') --}}
 @section('content')
-@extends('navigation')
+{{-- @extends('navigation') --}}
 <style>
     .card{
         position: relative;
