@@ -12,6 +12,7 @@
       </tr>
     </thead>
     <tbody>
+      {{-- {{$institutes}} --}}
         <div class="card-body">
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
