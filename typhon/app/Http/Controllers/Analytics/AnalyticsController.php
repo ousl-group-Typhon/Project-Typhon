@@ -19,7 +19,7 @@ class AnalyticsController extends Controller
         $DuePaymentsPercentage = $this->DuePaymentsPercentage($studentsCount,$duePaymentsCount);
 
 
-        return view('Analytics.analytics', [
+        return view('home', [
             'studentsCount' => $studentsCount,
             'totalPayments' => $totalPayments,
             'duePaymentsCount' => $duePaymentsCount,

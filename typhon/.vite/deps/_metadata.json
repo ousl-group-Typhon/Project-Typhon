@@ -1,17 +1,17 @@
 {
-  "hash": "0f1d7bd1",
-  "browserHash": "afcba146",
+  "hash": "3cc40dee",
+  "browserHash": "a28d4167",
   "optimized": {
     "bootstrap": {
       "src": "../../node_modules/bootstrap/dist/js/bootstrap.esm.js",
       "file": "bootstrap.js",
-      "fileHash": "69676666",
+      "fileHash": "b37bf886",
       "needsInterop": false
     },
     "axios": {
       "src": "../../node_modules/axios/index.js",
       "file": "axios.js",
-      "fileHash": "7700a01e",
+      "fileHash": "fd8ab47a",
       "needsInterop": false
     }
   },

@@ -9,5 +9,5 @@ class allPayments extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['paymentID','student_id', 'amount'];
+    protected $fillable = ['paymentID','student_id', 'classid', 'amount'];
 }

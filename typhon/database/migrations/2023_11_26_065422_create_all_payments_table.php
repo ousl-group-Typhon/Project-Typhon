@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('paymentID');
             $table->integer('student_id');
             $table->integer('amount');
+            $table->integer('classid');
             $table->timestamps();
 
 

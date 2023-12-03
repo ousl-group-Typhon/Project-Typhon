@@ -44,12 +44,17 @@
 
                     <div class="form-group">
                         <label for="studentid">Student Id</label>
-                        <input type="text" class="form-control" name="student_id" id="studentid" aria-describedby="emailHelp" placeholder="Enter Student Id">
+                        <input type="text" class="form-control" name="student_id" id="studentid" placeholder="Enter Student Id">
                     </div>
 
                     <div class="form-group">
                         <label for="amount">Amount</label>
-                        <input type="number" class="form-control" name="amount" id="amount" aria-describedby="emailHelp" placeholder="Enter Amount" min="0" step="0.01">
+                        <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter Amount" min="0" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classid">Class ID</label>
+                        <input type="number" class="form-control" name="classid" id="amount" placeholder="Enter Class ID" min="0" step="0.01">
                     </div>
   
                     <button type="submit" class="btn btn-primary">Record Payment</button>
@@ -71,6 +76,7 @@
                         <th scope="col">Payment ID</th>
                         <th scope="col">Student ID</th>
                         <th scope="col">Last Amount Paid</th>
+                        <th scope="col">Last Class Paid</th>
                         <th scope="col">Status</th>
                         <th scope="col">Due Date</th>
                     </tr>
@@ -81,7 +87,8 @@
                     <tr>
                         <th scope="row">{{$Payment->id}}</th>
                         <td>{{$Payment->student_id}}</td>
-                        <td>{{$Payment->amount}}</td>
+                        <td>{{ $Payment->amount != 0 ? $Payment->amount : 'N/A' }}</td>
+                        <td>{{ $Payment->classid != 0 ? $Payment->classid : 'N/A' }}</td>
                         <td>{{$Payment->status}}</td>
                         <td>{{$Payment->due_date}}</td>                         
                     </tr>
