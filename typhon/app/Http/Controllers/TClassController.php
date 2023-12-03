@@ -26,21 +26,43 @@ class TClassController extends Controller
         $tclass = $user->institute->t_classes;
         //$instituteStudents = $user->institute->students;
     
-        // You can now pass $instituteClasses and $instituteStudents to your view
-        // for display or further processing.
+    
         return view('tClasses.clsList',compact('tclass'));
     }
-    public function store(Request $request){
-        TClass::create([
-            'class_name' => $request->className,
-            'tutor_id' => $request->tutorId,
-            'institute_id'=> $request->instituteId,
-            'amount' => $request->amount,      
-        ]);
 
-        return redirect(route('student.show'))->with('status','Profile created!');
+    public function addClass(){
+        return view('tClasses.clsAdd');
+    }
+    public function store(Request $request){
+        $user = Auth::user()->id;
+        $instituteID = DB::table('institutes')->where('owner', $user)->first();
+        if ($instituteID != null) {
+            TClass::create([
+                'class_name' => $request->clsName,
+                'tutor_id' => $request->tutorID,
+                'institute_id'=> $instituteID->id,
+                'amount' => $request->classFee,      
+            ]);
+            return redirect(route('class.show'))->with('status','Profile created!');
+        } else {
+            return redirect(route('error'));
+        }
+        
+        
+
+       
     }
 
+    public function update($classId, Request $request){
+        
+        $class = TClass::findOrFail($classId);
+        $class->class_name = $request->input('clsName');
+        $class->tutor_id = $request->input('tutorID');
+        $class->amount = $request->input('classFee');
+        $class->update();
+
+        return redirect(route('students.index'))->with('status','Profile update!');
+    }
     public function index(){
         //$tclass = TClass::all();
         $user = Auth::user();

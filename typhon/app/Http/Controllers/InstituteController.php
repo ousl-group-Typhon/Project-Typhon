@@ -5,10 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Institute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\AuthUserController;
 use DB;
 
 class InstituteController extends Controller
 {
+    public function getUserId(){
+        $userId = Auth::user()->id;
+        return $userId;
+    }
+
+    public function getUserType(){
+        $userType = Auth::user()->user_type;
+        return $userType;
+    }
+
+
     public function add() {
         return view('institute.instAdd');
     }
@@ -57,15 +69,20 @@ class InstituteController extends Controller
     //custom functions 
     //show classes in institiute
     public function showInstituteClasses(){
-        $user = Auth::user()->id;
+        // $user = Auth::user()->id;
+        $user = getUserId();
         $institute = DB::table('institutes')->where('owner', $user)->first();
-        $tclass = DB::table('t_classes')->where('institute_id',$institute->id)->get();
+        $tclass = DB::table('t_classes')
+        ->join('users as user','t_classes.tutor_id', '=', 'user.id')
+        ->where('institute_id',$institute->id)
+        ->select('user.name as user_name','t_classes.*')->get();
         return view('tClasses.clsList',compact('tclass'));
     }
 
     //show students in institute
     public function showInstituteStudents(){
-        $user = Auth::user()->id;
+        //$user = Auth::user()->id;
+        $user = getUserId();
         $institute = DB::table('institutes')->where('owner', $user)->first();
 
         $students= DB::table('students')
@@ -77,5 +94,13 @@ class InstituteController extends Controller
         ->get();
 
         return view('student.stdList',compact('students'));
+    }
+
+    public function showInstitutesWithClasses(){
+        $userId = Auth::user()->id;
+        //$userId = getUserId();
+        $institutes = DB::table('t_classes')->join('institutes', 't_classes.institute_id', '=' , 'institutes.id')->where('t_classes.tutor_id', '=', $userId)->select('institutes.*')->get();
+        
+        return view('institute.instList',compact('institutes'));
     }
 }

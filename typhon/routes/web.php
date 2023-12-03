@@ -122,6 +122,10 @@ Route::get('/class/index',[App\Http\Controllers\TClassController::class,'index']
 
 Route::get('/class/index/withid/{classId}',[App\Http\Controllers\TClassController::class,'showStudentsInClass'])->name('class.index')->middleware(['auth', 'verified']);
 
+Route::get('/class/store',[App\Http\Controllers\TClassController::class,'store'])->name('class.store')->middleware(['auth', 'verified']);
+
+Route::get('/class/addclass',[App\Http\Controllers\TClassController::class,'addClass'])->name('class.addclass')->middleware(['auth', 'verified']);
+
 // gives classes which belongs to an institute
 Route::get('/institute/classes',[App\Http\Controllers\InstituteController::class,'showInstituteClasses'])->name('institute.classlist')->middleware(['auth', 'verified']);
 // gives students in the institute
@@ -130,3 +134,7 @@ Route::get('/institute/students',[App\Http\Controllers\InstituteController::clas
 // side bar Route
 Route::get('/sidebar', [SidebarController::class, 'sidebarCall']);
 
+
+//Teacher's Interface
+//institiutes which have classes showInstitutesWithClasses()
+Route::get('/classes/institutes',[App\Http\Controllers\InstituteController::class,'showInstitutesWithClasses'])->name('institute.studentlist')->middleware(['auth', 'verified']);
