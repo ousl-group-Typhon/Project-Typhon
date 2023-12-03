@@ -10,7 +10,6 @@ class assignmentssubmission extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'student_id',
         'cource_id',
         'submission'

@@ -19,6 +19,7 @@
                                 <th scope="col">Transaction ID</th>
                                 <th scope="col">Student ID</th>
                                 <th scope="col">Amount Paid</th>
+                                <th scope="col">Class Paid</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,7 @@
                                     <th scope="row">{{ $Transaction->id }}</th>
                                     <td>{{ $Transaction->student_id }}</td>
                                     <td>{{ $Transaction->amount }}</td>
+                                    <td>{{ $Transaction->classid }}</td>
 
                                 </tr>
                             @empty

@@ -36,6 +36,7 @@ class PaymentController extends Controller
         // If an existing payment record is found, update it; otherwise, create a new one
         if ($existingPayment) {
             $existingPayment->amount = $request->amount; // Update the amount
+            $existingPayment->classid = $request->classid; // Update the amount
             $existingPayment->due_date = $dueDate; // Update the due date
             $existingPayment->status = 'Paid'; // Set the status to 'active'
             $status = $existingPayment->save(); // Save the changes
@@ -43,6 +44,7 @@ class PaymentController extends Controller
             $status = Payments::create([
                 'student_id' => $request->student_id,
                 'amount' => $request->amount,
+                'classid' => $request->classid,
                 'due_date' => $dueDate,
                 'status' => 'Paid', // Set the status to 'active'
             ]);

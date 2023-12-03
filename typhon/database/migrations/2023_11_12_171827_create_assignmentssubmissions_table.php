@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('assignmentssubmissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('student_id');
+            $table->unsignedBigInteger('student_id');
             $table->string('cource_id');
             $table->mediumText('submission');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users'); 
+            $table->foreign('student_id')->references('id')->on('students'); 
         });
     }
 

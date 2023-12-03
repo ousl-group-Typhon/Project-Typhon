@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Assignments;
 use Illuminate\Http\Request;
 use App\Models\assignmentssubmission;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
-class AssignmentsController extends Controller
-{
+class AssignmentsController extends Controller{
 
     //link page of assignment submission form to
     public function assignmentsform()
@@ -18,32 +19,56 @@ class AssignmentsController extends Controller
     //Store data into the database from the submission form
     public function store(Request $request)
     {
-    try {
-        $user_id = auth()->user()->id;
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'student_id' => [
+                'required',
+                Rule::exists('students', 'id'), // Validate that the student ID exists in the 'students' table
+            ],
+            'cource_id' => 'required',
+            'submission' => 'required|file|mimes:pdf,doc,docx',
+        ]);
+
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $data = [
-            'user_id' => $user_id,
             'student_id' => $request->student_id,
             'cource_id' => $request->cource_id,
         ];
 
         if ($request->hasFile('submission')) {
             $file = $request->file('submission');
+
+            // Validate file type and extension
+            $validator = Validator::make(['submission' => $file], [
+                'submission' => 'file|mimes:pdf,doc,docx',
+            ]);
+
+            // If file validation fails, redirect back with errors
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->move('uploads/submissions/', $filename);
             $data['submission'] = $filename;
 
+            // Save data to the database
             assignmentssubmission::create($data);
 
-            return 'Data stored successfully!';
+            // Redirect back with success message
+            return redirect()->back()->with('success', 'Data stored successfully!');
         } else {
-            return 'No file uploaded!';          
+            // Redirect back with an error message
+            return redirect()->back()->with('error', 'No file uploaded!');
         }
-    } catch (\Exception $e) {
-        return $e->getMessage();
     }
-}
+
+
 }
 
 //end

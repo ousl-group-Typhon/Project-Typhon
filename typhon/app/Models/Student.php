@@ -41,6 +41,7 @@ class Student extends Model
             Payments::create([
                 'student_id' => $student->id,
                 'amount' => 0, // Initial amount, you can adjust this as needed
+                'classid' => 0000, 
                 'due_date' => now()->endOfMonth(), // Due date at the end of the current month
                 'status' => 'due',
             ]);

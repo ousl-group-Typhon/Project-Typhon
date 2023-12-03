@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->integer('amount');
+            $table->integer('classid');
             $table->string('status');
             $table->timestamp('due_date')->nullable(); 
             $table->timestamps();
