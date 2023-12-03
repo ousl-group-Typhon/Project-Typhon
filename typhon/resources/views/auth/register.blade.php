@@ -53,6 +53,7 @@
                                 <label for="password">{{ __('Confirm Password') }}</label>
                             </div>
 
+
                         <div class="row mb-0 mt-4">
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary fw-medium fs-5">
