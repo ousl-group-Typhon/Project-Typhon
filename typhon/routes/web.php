@@ -47,6 +47,16 @@ Route::get('/loginAutoGen', function () {
 // })->middleware(['auth', 'verified'])->name('home');
 
 
+//analytics page
+Route::get('/analytics', [App\Http\Controllers\Analytics\AnalyticsController::class, 'index'])->name('analytics');
+
+Route::get('/total-students', [AnalyticsController::class, 'totalStudents']);
+
+
+
+
+
+
 //Asignment Route set by controller
 Route::get('/assignments', [App\Http\Controllers\Assignments\AssignmentsController::class, 'assignmentsform'])->name('assignments');
 
@@ -64,8 +74,14 @@ Route::get('/marking', [App\Http\Controllers\Assignments\MarkingController::clas
 //Payment page link
 Route::get('/payment', [App\Http\Controllers\Payments\PaymentController::class, 'index'])->name('payment.index');
 
+Route::get('/transactions', [App\Http\Controllers\Payments\PaymentController::class, 'Transactions'])->name('transactions');
+
 //Record Payment
 Route::post('/payment/recorded', [PaymentController::class, 'store'])->name('record.payment');
+
+//payment-reset page
+Route::post('/reset-pay-cycle', [PaymentController::class, 'resetPayCycle'])->name('reset-pay-cycle');
+
 
 //Student CRUD operation
 //Add Student

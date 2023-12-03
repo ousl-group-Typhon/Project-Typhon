@@ -15,4 +15,17 @@ class Payments extends Model
         'status',
         'due_date',
     ];
+
+    protected static function boot()
+    {
+    parent::boot();
+
+    static::updated(function ($payment) {
+        allPayments::create([
+            'paymentID' => $payment->id,
+            'student_id' => $payment->student_id,
+            'amount' => $payment->amount,
+        ]);
+    });
+    }
 }

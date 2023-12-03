@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payments;
 
 use Illuminate\Http\Request;
 use App\Models\Payments;
+use App\Models\allPayments;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
@@ -14,6 +15,13 @@ class PaymentController extends Controller
     {   
         $Payments = Payments::all();
         return view('Payments.payments', compact('Payments'));
+    }
+
+    public function Transactions()
+    {   
+        
+        $transactions = allPayments::paginate(10);
+        return view('Payments.transactions', compact('transactions'));
     }
 
     //store Payments
@@ -45,5 +53,21 @@ class PaymentController extends Controller
         } else {
             return redirect()->back()->with('error', 'Failed To Record Payment');
         }
+    }
+
+    //reset pay cycle
+    public function resetPayCycle()
+    {
+        $payments = Payments::all();
+
+        // Set the due_date to the end of the current month and the status to 'due' for each record
+        foreach ($payments as $payment) {
+            $payment->update([
+                'due_date' => Carbon::now()->endOfMonth(),
+                'status' => 'Due',
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Pay cycle reset successfully for all records.');
     }
 }

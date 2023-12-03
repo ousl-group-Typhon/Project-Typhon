@@ -5,7 +5,24 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            <a class="btn btn-primary rounded-pill" href="{{ route('transactions') }}">All Transactions</a>        
             <div class="card">
+
+            <form action="{{ route('reset-pay-cycle') }}" method="post">
+                @csrf
+                @method('post')
+                <button type="submit" class="btn btn-primary" onclick="confirmReset()">Reset Pay Cycle for All Records</button>
+            </form>
+
+            <script>
+                function confirmReset() {
+                    if (window.confirm('Are you sure you want to reset the pay cycle for all records?')) {
+                        document.getElementById('reset-pay-cycle-form').submit();
+                    }
+                }
+            </script>
+
                 <div class="card-header">Record Payments</div>
 
                 <div class="card-body">
@@ -18,6 +35,8 @@
                             {{ session('error') }}
                         </div>
                     @endif
+
+                    
 
 
                     <form method="post" action="{{ route('record.payment') }}" enctype="multipart/form-data"> 
