@@ -5,6 +5,7 @@ use App\Http\Controllers\InstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Assignments\AssignmentsController;
 use App\Http\Controllers\Assignments\MarkingController;
+use App\Http\Controllers\Payments\PaymentController;
 use App\Http\Controllers\TClassController;
 //use App\Http\Controllers\AssignmentsController;
 use App\Http\Controllers\ErrorController;
@@ -48,6 +49,16 @@ Route::get('/loginAutoGen', function () {
 // })->middleware(['auth', 'verified'])->name('home');
 
 
+//analytics page
+Route::get('/analytics', [App\Http\Controllers\Analytics\AnalyticsController::class, 'index'])->name('analytics');
+
+Route::get('/total-students', [AnalyticsController::class, 'totalStudents']);
+
+
+
+
+
+
 //Asignment Route set by controller
 Route::get('/assignments', [App\Http\Controllers\Assignments\AssignmentsController::class, 'assignmentsform'])->name('assignments');
 
@@ -60,6 +71,19 @@ Route::post('/marks/store', [MarkingController::class, 'storemarks'])->name('mar
 
 //Assignment marking page for tutors
 Route::get('/marking', [App\Http\Controllers\Assignments\MarkingController::class, 'index'])->name('marking');
+
+
+//Payment page link
+Route::get('/payment', [App\Http\Controllers\Payments\PaymentController::class, 'index'])->name('payment.index');
+
+Route::get('/transactions', [App\Http\Controllers\Payments\PaymentController::class, 'Transactions'])->name('transactions');
+
+//Record Payment
+Route::post('/payment/recorded', [PaymentController::class, 'store'])->name('record.payment');
+
+//payment-reset page
+Route::post('/reset-pay-cycle', [PaymentController::class, 'resetPayCycle'])->name('reset-pay-cycle');
+
 
 //Student CRUD operation
 //Add Student
@@ -100,6 +124,10 @@ Route::get('/class/index',[App\Http\Controllers\TClassController::class,'index']
 
 Route::get('/class/index/withid/{classId}',[App\Http\Controllers\TClassController::class,'showStudentsInClass'])->name('class.index')->middleware(['auth', 'verified']);
 
+Route::get('/class/store',[App\Http\Controllers\TClassController::class,'store'])->name('class.store')->middleware(['auth', 'verified']);
+
+Route::get('/class/addclass',[App\Http\Controllers\TClassController::class,'addClass'])->name('class.addclass')->middleware(['auth', 'verified']);
+
 // gives classes which belongs to an institute
 Route::get('/institute/classes',[App\Http\Controllers\InstituteController::class,'showInstituteClasses'])->name('institute.classlist')->middleware(['auth', 'verified']);
 // gives students in the institute
@@ -110,4 +138,10 @@ Route::get('/sidebar', [SidebarController::class, 'sidebarCall']);
 
 //navigation route
 Route::get('/navigation', [navigationController::class, 'navigation']);
+
+
+
+//Teacher's Interface
+//institiutes which have classes showInstitutesWithClasses()
+Route::get('/classes/institutes',[App\Http\Controllers\InstituteController::class,'showInstitutesWithClasses'])->name('institute.studentlist')->middleware(['auth', 'verified']);
 

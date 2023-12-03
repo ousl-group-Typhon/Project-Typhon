@@ -31,4 +31,4 @@ return new class extends Migration
     }
 };
 
-//migration file ended
+//migration file

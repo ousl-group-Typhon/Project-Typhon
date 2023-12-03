@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('institutes', function (Blueprint $table) {
+        Schema::create('all_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('institute_name');
-            //$table->string('institiute_address');
-            $table->unsignedBigInteger('owner');
-            //$table->string('contact_number');
+            $table->unsignedBigInteger('paymentID');
+            $table->integer('student_id');
+            $table->integer('amount');
             $table->timestamps();
 
-            $table->foreign('owner')->references('id')->on('users');
+
+            $table->foreign('paymentID')->references('id')->on('Payments'); 
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('institutes');
+        Schema::dropIfExists('all_payments');
     }
 };

@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('institutes', function (Blueprint $table) {
+        Schema::create('user_type', function (Blueprint $table) {
             $table->id();
-            $table->string('institute_name');
-            //$table->string('institiute_address');
-            $table->unsignedBigInteger('owner');
-            //$table->string('contact_number');
             $table->timestamps();
-
-            $table->foreign('owner')->references('id')->on('users');
         });
     }
 
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('institutes');
+        Schema::dropIfExists('user_type');
     }
 };
