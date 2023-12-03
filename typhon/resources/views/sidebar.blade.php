@@ -22,24 +22,34 @@
        <ul>
             
             <li class="list active">
-                <a href="#">
+                <a href="{{ route('institute.studentlist') }}">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title"> Classes</span>
                 </a>
             </li>
 
             <li class="list">
-                <a href="#">
+                <a href="{{ route('institute.studentlist') }}">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                     <span class="title">Teachers</span>
                 </a>
             </li>
             <li class="list">
-                <a href="#">
+                <a href="{{ route('students.index') }}">
                     <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                     <span class="title"> Students</span>
                 </a>
-           
+                <li class="list">
+                    <a href="{{ route('marking') }}">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title"> Assignments</span>
+                    </a>
+                    <li class="list">
+                        <a href="{{ route('payment.index') }}">
+                            <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="title"> Payments</span>
+                        </a>
+                   
 
 
         </ul>
